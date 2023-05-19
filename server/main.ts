@@ -5,7 +5,7 @@ const port = 3000;
 const hostname = "localhost"
 const app = express();
 
-app.use(express.static("pages"));
+app.use(express.static("public/pages"));
 
 const newTodoSchema = zod.object({
   text: zod.string(),
