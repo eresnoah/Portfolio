@@ -1,6 +1,6 @@
 import { FormEvent, useEffect, useState } from "react";
 import classes from "./Classes.module.css"
-import { ToDo, todos } from "../public/pages";
+import { ToDo, todos } from "../pages";
 import Card from "./Card";
 
 interface ToDoFormProps {

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import classes from "../components/Classes.module.css";
-import ToDoList from "../../components/ToDoList";
-import ToDoForm from "../../components/ToDoForm";
+import ToDoList from "../components/ToDoList";
+import ToDoForm from "../components/ToDoForm";
 
 export interface ToDo {
   id: number;

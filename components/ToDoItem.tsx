@@ -1,4 +1,4 @@
-import { ToDo } from "../public/pages";
+import { ToDo } from "../pages";
 import Card from "./Card";
 import classes from "./Classes.module.css";
 
