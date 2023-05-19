@@ -1,18 +1,10 @@
-import express from "express";
-import zod from "zod";
+const express = require("express");
+const next = require("next");
+const zod = require("zod");
 
-const port = 3000;
-const hostname = "localhost"
-const app = express();
-
-app.use(express.static("public/pages"));
-
-const newTodoSchema = zod.object({
-  text: zod.string(),
-  deadline: zod.string(),
-});
-
-type NewTodo = zod.infer<typeof newTodoSchema>;
+const dev = process.env.NODE_ENV !== "production";
+const app = next({ dev });
+const handle = app.getRequestHandler();
 
 interface Todo {
   id: number;
@@ -20,41 +12,41 @@ interface Todo {
   deadline: Date;
 }
 
-const todos: Todo[] = [];
+const todos: Todo[] = [
+  {
+    id: 0,
+    text: "learn",
+    deadline: new Date(),
+  },
+  {
+    id: 1,
+    text: "learn",
+    deadline: new Date(),
+  },
+];
 
-todos.push({
-  id: 1,
-  text: "Learn TypeScript",
-  deadline: new Date(),
-});
+app
+  .prepare()
+  .then(() => {
+    const server = express();
 
-app.get("/", (_, res) => {
-  res.send(`hello`);
-  res.json(todos);
-});
+    server.use(express.json());
 
-app.post("/", (req, res) => {
-  try {
-    const parsedNewTodo = newTodoSchema.parse(req.body);
+    server.get("*", (req: any, res: any) => {
+      console.log("app get request");
+      return handle(req, res);
+    });
 
-    console.log(parsedNewTodo.deadline);
+    server.post("/post", (req: any, res: any) => {
+      console.log("post req");
+    });
 
-    const newTodo = {
-      id: todos.length + 1,
-      text: parsedNewTodo.text,
-      deadline: new Date(parsedNewTodo.deadline),
-    };
-
-    console.log(newTodo);
-
-    todos.push(newTodo);
-
-    res.status(201).json(newTodo);
-  } catch (error) {
-    res.status(400).json(error);
-  }
-});
-
-app.listen(port,hostname, () => {
-  console.log("app is running at "+ hostname + port);
-});
+    server.listen(3000, (err: any) => {
+      if (err) throw err;
+      console.log("> Ready on http://localhost:3000");
+    });
+  })
+  .catch((ex: { stack: any }) => {
+    console.error(ex.stack);
+    process.exit(1);
+  });

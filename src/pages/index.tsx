@@ -2,6 +2,7 @@ import { useState } from "react";
 import classes from "../components/Classes.module.css";
 import ToDoList from "../components/ToDoList";
 import ToDoForm from "../components/ToDoForm";
+import Layout from "../components/layout/Layout";
 
 export interface ToDo {
   id: number;
@@ -9,7 +10,7 @@ export interface ToDo {
   deadline: Date;
 }
 
-export const todos: ToDo[] = [
+const todos: ToDo[] = [
   {
     id: 0,
     text: "learn",
@@ -34,15 +35,15 @@ export default function Home() {
   }
 
   return (
-    <section>
-      <ul className={classes.list}>
-        <li className={classes.item}>
-          <ToDoForm onPostToDo={updateState} />
-        </li>
-        <li className={classes.item}>
-          <ToDoList todos={todos} />
-        </li>
-      </ul>
-    </section>
+      <section>
+        <ul className={classes.list}>
+          <li className={classes.item}>
+            <ToDoForm onPostToDo={updateState} />
+          </li>
+          <li className={classes.item}>
+            <ToDoList todos={todos} />
+          </li>
+        </ul>
+      </section>
   );
 }

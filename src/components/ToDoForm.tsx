@@ -29,8 +29,6 @@ function ToDoForm(props: ToDoFormProps) {
   
     //gather all input from user and send it to be converted
     function handleSubmit(event: FormEvent<HTMLFormElement>) {
-      event.preventDefault();
-  
       const newToDo: ToDo = {
         id: todos.length,
         text: text,
@@ -44,7 +42,7 @@ function ToDoForm(props: ToDoFormProps) {
   
     return (
       <Card>
-        <form className={classes.form} onSubmit={handleSubmit}>
+        <form className={classes.form} onSubmit={handleSubmit} action="/post" method="POST">
           <div className={classes.control}>
             <label htmlFor="deadline">Deadline: </label>
             <input value={deadline} onChange={(event)=>handleDeadlineChange(event.target.value)} type="date" id="deadline" required/>
