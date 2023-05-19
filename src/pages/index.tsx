@@ -10,7 +10,7 @@ export interface ToDo {
   deadline: Date;
 }
 
-const todos: ToDo[] = [
+export const todos: ToDo[] = [
   {
     id: 0,
     text: "learn",

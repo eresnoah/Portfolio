@@ -29,6 +29,7 @@ function ToDoForm(props: ToDoFormProps) {
   
     //gather all input from user and send it to be converted
     function handleSubmit(event: FormEvent<HTMLFormElement>) {
+      
       const newToDo: ToDo = {
         id: todos.length,
         text: text,
