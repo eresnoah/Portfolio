@@ -10,7 +10,7 @@ export default function Home() {
   const [loadedTodos, setLoadedTodos] = useState<Todo[]>([]);
 
   useEffect(() => {
-    fetch("http://localhost:3001/todos")
+    fetch("http://localhost:3001")
       .then((response) => response.json())
       .then((data) => {
         const todos: Todo[] = [];
