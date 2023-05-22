@@ -2,17 +2,19 @@
   "name": "to-do-app",
   "version": "0.1.0",
   "private": true,
-  "main" : "server/main.ts",
+  "main": "server/main.ts",
   "scripts": {
-    "dev": "ts-node server/main.ts",
+    "client": "next dev",
+    "server": "ts-node main.ts",
     "build": "next build",
-    "start": "ts-node server/main.ts",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
     "lint": "next lint"
   },
   "dependencies": {
     "@types/node": "20.1.4",
     "@types/react": "18.2.6",
     "@types/react-dom": "18.2.4",
+    "concurrently": "^8.0.1",
     "express": "^4.18.2",
     "next": "13.4.2",
     "react": "18.2.0",

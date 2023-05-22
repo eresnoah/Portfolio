@@ -1,9 +1,9 @@
 import ToDoItem from "./ToDoItem";
 import classes from "./Classes.module.css"
-import { ToDo } from "../pages";
+import { Todo } from "../../main";
 
 interface ToDoListProps {
-  todos: ToDo[]
+  todos: Todo[]
 }
 
 function ToDoList(props: ToDoListProps) {
@@ -11,7 +11,7 @@ function ToDoList(props: ToDoListProps) {
 
   return (
     <ul className={classes.list}>
-      {todos.map((todo: ToDo) => (
+      {todos.map((todo: Todo) => (
         <ToDoItem
           key={todo.id}
           id={todo.id}
