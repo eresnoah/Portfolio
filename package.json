@@ -5,9 +5,7 @@
   "scripts": {
     "client": "next dev",
     "server": "ts-node src/server/main.ts",
-    "build": "next build",
-    "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "lint": "next lint"
+    "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "dependencies": {
     "@types/node": "20.1.4",

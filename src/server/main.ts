@@ -27,6 +27,7 @@ todos.push({
   deadline: new Date(),
 });
 
+//allows CORS bypass
 app.use((_, res, next) => {
   res.append("Access-Control-Allow-Origin", ["*"]);
   res.append("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE");
@@ -40,8 +41,6 @@ app.get("/todos", (_, res) => {
 });
 
 app.post("/todos", (req, res) => {
-  console.log("this me" + req.body.toString());
-
   try {
     const parsedNewTodo = newTodoSchema.parse(req.body);
 
