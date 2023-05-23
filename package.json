@@ -2,10 +2,9 @@
   "name": "to-do-app",
   "version": "0.1.0",
   "private": true,
-  "main": "server/main.ts",
   "scripts": {
     "client": "next dev",
-    "server": "ts-node main.ts",
+    "server": "ts-node src/server/main.ts",
     "build": "next build",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "lint": "next lint"

@@ -1,6 +1,6 @@
 import ToDoItem from "./ToDoItem";
 import classes from "./Classes.module.css"
-import { Todo } from "../../main";
+import { Todo } from "../server/main";
 
 interface ToDoListProps {
   todos: Todo[]
