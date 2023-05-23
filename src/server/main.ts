@@ -36,7 +36,6 @@ app.use((_, res, next) => {
 });
 
 app.get("/todos", (_, res) => {
-  console.log(todos);
   res.json(todos);
 });
 
