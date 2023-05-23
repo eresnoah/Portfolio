@@ -26,6 +26,7 @@ function ToDoForm(props: SubmitProp) {
   }
 
   function handleSubmit(event: FormEvent) {
+    //prevent page reload
     event.preventDefault();
 
     //serialize data to send
@@ -34,6 +35,7 @@ function ToDoForm(props: SubmitProp) {
       text: text,
     });
 
+    //send data for posting &
     submitHandler(todo);
     resetForm();
   }
